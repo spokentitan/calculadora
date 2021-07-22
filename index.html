@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
+    <section>
+        <h1>Calculadora</h1>
+    </section>
+    <section>
+        <div id="containerOfEstructureBase">
+            <div id="screen"></div>
+
+            <table>
+
+                <tr>
+                    <td>
+                        <button onclick="concatenar(this)" id="1">1</button>
+                    </td>
+                    <td>
+                        <button onclick="concatenar(this)" id="2">2</button>
+                    </td>
+                    <td>
+                        <button onclick="concatenar(this)" id="3">3</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button onclick="concatenar(this)" id="4">4</button>
+                    </td>
+                    <td>
+                        <button onclick="concatenar(this)" id="5">5</button>
+                    </td>
+                    <td>
+                        <button onclick="concatenar(this)" id="6">6</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button onclick="concatenar(this)" id="7">7</button>
+                    </td>
+                    <td>
+                        <button onclick="concatenar(this)" id="8">8</button>
+                    </td>
+                    <td>
+                        <button onclick="concatenar(this)" id="9">9</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                    <td>
+                        <button onclick="concatenar(this)" id="0">0</button>
+                        
+                    </td>
+                    <td>
+                        <button onclick="clearScreen()">c</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><button onclick="getOperacion(this)">-</button></td>
+                    <td><button onclick="getOperacion(this)">+</button></td>
+                    <td><button onclick="getOperacion(this)">x</button></td>
+
+                </tr>
+                <tr>
+                    <td><button onclick="getOperacion(this)">/</button></td>
+                    <td><button onclick="resultadoOperacion()">=</button></td>
+                    <td><button onclick="eliminar()">D</button></td>
+                </tr>
+            </table>
+        </div>
+    </section>
+    <footer>
+
+    </footer>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

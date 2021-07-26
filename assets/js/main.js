@@ -2,16 +2,16 @@ var valortotalinicial = "";
 var valortotalsegundario = "";
 var operacion = "";
 
-function clearScreen(){
-  debugger
+function clearScreen() {
   valortotalinicial = "";
   valortotalsegundario = "";
+  operacion = "";
   document.getElementById("screen").innerText = "";
 }
 
 function sumar() {
   let resultado = parseInt(valortotalinicial) + parseInt(valortotalsegundario);
-  document.getElementById("screen").innerText = resultado;  
+  document.getElementById("screen").innerText = resultado;
   return resultado;
 }
 
@@ -44,43 +44,77 @@ function concatenar(boton) {
 }
 
 function getOperacion(botonOperacion) {
-  if(operacion !== ""){
-    let resultado = resultadoOperacion();
-    operacion = botonOperacion.innerText;
-    document.getElementById("screen").innerText += operacion;
-    valortotalsegundario = "";
-    valortotalinicial = resultado.toString();
-  }else{
-    operacion = botonOperacion.innerText;
-    document.getElementById("screen").innerText += operacion;
-  }
   
+ 
+  if (valortotalinicial == "" && botonOperacion.innerText == "-") {
+     concatenar(botonOperacion);
+  } else {
+    if (operacion !== "") {
+      let resultado = resultadoOperacion();
+      operacion = botonOperacion.innerText;
+      document.getElementById("screen").innerText += operacion;
+  
+    } else if(valortotalinicial !== ""){
+      operacion = botonOperacion.innerText;
+      document.getElementById("screen").innerText += operacion; 
+    }
+  }
 }
 
-function eliminar(){
-    
-   let cadenaEnTexto = document.getElementById("screen").innerText;
-   let cadenaEnArreglo = Array.from(cadenaEnTexto);
-   cadenaEnArreglo.pop();
-   cadenaEnTexto = cadenaEnArreglo.join("");
-   document.getElementById("screen").innerText = cadenaEnTexto;
+function eliminar() {
+  let cadenaEnTexto = document.getElementById("screen").innerText;
+  let cadenaEnArreglo = Array.from(cadenaEnTexto);
+  cadenaEnArreglo.pop();
+  cadenaEnTexto = cadenaEnArreglo.join("");
+  document.getElementById("screen").innerText = cadenaEnTexto;
+
+  if (valortotalsegundario !== "") {
+    let arrayTemporalDeValorSegundario = Array.from(valortotalsegundario);
+    arrayTemporalDeValorSegundario.pop();
+    valortotalsegundario = arrayTemporalDeValorSegundario.join("");
+  } else if (operacion !== "") {
+    let arrayTemporalDeOperacion = Array.from(operacion);
+    arrayTemporalDeOperacion.pop();
+    operacion = arrayTemporalDeOperacion.join("");
+  } else if (valortotalinicial !== "") {
+    let arrayTemporalDeValorInicial = Array.from(valortotalinicial);
+    arrayTemporalDeValorInicial.pop();
+    valortotalinicial = arrayTemporalDeValorInicial.join("");
+  }
 }
 
 function resultadoOperacion() {
+  let valor = 0;
+  
   switch (operacion) {
     case "x":
-      return multiplicar();
-      
+       valor = multiplicar();
+      reorganizarVariables(valor);
+      return valor;
+
     case "-":
-     return restar();
-      
+       valor = restar();
+      reorganizarVariables(valor);
+      return valor;
+
     case "/":
-      return dividir();
-      
+       valor = dividir();
+      reorganizarVariables(valor);
+      return valor;
+
     case "+":
-      return sumar();
-       
+       valor = sumar();
+      reorganizarVariables(valor);
+      return valor;
   }
 }
 
-
+function reorganizarVariables(valor, ...operador) {
+  valortotalsegundario = "";
+  valortotalinicial = valor.toString();
+  if (operador.join("") !== "") {
+    operacion = operador.join("");
+  } else {
+    operacion = "";
+  }
+}

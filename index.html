@@ -58,22 +58,22 @@
                     </td>
                     <td>
                         <button onclick="concatenar(this)" id="0">0</button>
-                        
+
                     </td>
                     <td>
-                        <button onclick="clearScreen()">c</button>
+                        <button onclick="clearScreen()" id="c">c</button>
                     </td>
                 </tr>
                 <tr>
-                    <td><button onclick="getOperacion(this)">-</button></td>
-                    <td><button onclick="getOperacion(this)">+</button></td>
-                    <td><button onclick="getOperacion(this)">x</button></td>
+                    <td><button onclick="getOperacion(this)" id="-" class="operators">-</button></td>
+                    <td><button onclick="getOperacion(this)" id="+" class="operators">+</button></td>
+                    <td><button onclick="getOperacion(this)" id="x" class="operators">x</button></td>
 
                 </tr>
                 <tr>
-                    <td><button onclick="getOperacion(this)">/</button></td>
-                    <td><button onclick="resultadoOperacion()">=</button></td>
-                    <td><button onclick="eliminar()">D</button></td>
+                    <td><button onclick="getOperacion(this)" id="/" class="operators">/</button></td>
+                    <td><button onclick="resultadoOperacion()" id="=" class="operators">=</button></td>
+                    <td><button onclick="eliminar()" id="D">D</button></td>
                 </tr>
             </table>
         </div>
@@ -81,6 +81,7 @@
     <footer>
 
     </footer>
+   
     <script src="assets/js/main.js"></script>
 </body>
 
